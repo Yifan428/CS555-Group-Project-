@@ -1,6 +1,6 @@
 # CS555-Group-Project-
 
-# Group Members
+## Group Members
 Yifan Shi
 Yongchang Yao
 Yuchen Zeng
