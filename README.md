@@ -1,4 +1,4 @@
-# CS555-Group-Project-
+# CS555 Group Project
 
 ## Group Members
 Yifan Shi
