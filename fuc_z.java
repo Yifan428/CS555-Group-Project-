@@ -15,7 +15,15 @@ public class fuc_z {
 				sonname=I.elementAt(num).getName();
 				namelist=sonname.split(" ");
 				namelist[namelist.length-1]=failyname;
-				sonname=namelist.toString();
+				sonname="";
+				for(int x=0;x<namelist.length;x++)
+				{
+					sonname=sonname+namelist[x];
+					if(x!=namelist.length-1){
+						sonname=sonname+" ";
+					}
+				}
+				I.elementAt(num).name=sonname;
 			}
 		}
 	}
