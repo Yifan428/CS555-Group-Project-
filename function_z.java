@@ -1,6 +1,6 @@
 package cs5551;
 import java.util.Vector;
-public class fuc_z {
+public class function_z {
 	public static void check_male_name(Family f,Vector<Individual> I)//male same name
 	{
 		String name[]=f.getHusbandName().split(" ");
