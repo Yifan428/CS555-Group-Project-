@@ -9,51 +9,52 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 public class Sprint1_Yang {
 	static List<Individual> allIndividuals = new ArrayList<Individual>();
 	static List<Family> allFamilies = new ArrayList<Family>();
-	static List<String> ids; 
+
 	
-	public static void main(String[] args) {
-		
-		File filename = new File("D:\\eclipse-workspace\\CS555\\src\\proj_04\\Test_Family_Team wisdom of Mr Toad.ged");
-        printINDIAndFAMTables(filename);
-	
-		
-}
 	//Sprint 1 
 	//US22
-    public boolean uniqueId(List<String> ids) {
-		Set<String> set = new HashSet<String>();
-		for (String id1 : ids) {
-			if (set.contains(id1)) return false;
-			else set.add(id1);
+    public static boolean uniqueId(List<String> ID) {
+		ArrayList<String> list = new ArrayList<String>();
+		for (String id : ID) {
+			if (list.contains(id)) return false;
+			else list.add(id);
 		}
 		return true;
 	}
     
 	//US01 
-    public boolean validateDate(String inputDate) { 
+    public static boolean validateDate(String inputDate) { 
+    	
  		try { 
- 			if (!inputDate.equalsIgnoreCase("NA")) { 
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
- 	            Date date1 = sdf.parse(inputDate); 
-	            if(!inputDate.equals(sdf.format(date1))) 
-	            	return false; 
- 	            if (date1.after(new Date())) { 
- 	            	return false; 
+ 			if (inputDate.equalsIgnoreCase("NA")) {
+ 				return false;
+ 			}
+ 			else { 
+ 				Date now = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH); 
+				String time = sdf.format(now.getTime());
+ 	            Date date1 = sdf.parse(inputDate);  
+ 	            if (date1.after(now)) { 
+ 	            	return true; 
  	            } 
- 			} 
+ 			
+ 			}
  		} catch(ParseException e) { 
- 			System.out.println("Exception in parsing date" + inputDate); 
+ 			System.out.println("Exception in parsing date " + inputDate); 
  			return false; 
- 		} 
- 		return true; 
+ 		}
+		return false; 
+ 
  	} 
     
 	public static void printINDIAndFAMTables(File f) {
@@ -68,6 +69,7 @@ public class Sprint1_Yang {
 	    	boolean readingDeathDate = false;
 	    	boolean readingMarriageDate = false;
 	    	boolean readingDivorceDate = false;
+	    	
 	    	// read each line from the file
 	    	for (String line = br.readLine(); line != null; line = br.readLine()) {
 
@@ -106,6 +108,7 @@ public class Sprint1_Yang {
 						indv.setId(value);
 						
 						allIndividuals.add(indv);
+					
 					}
 					
 					if(tag.equals("NAME") && indv != null) {
