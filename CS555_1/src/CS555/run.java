@@ -53,7 +53,7 @@ public class run {
 		SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
 		//Us from ZYC
         //US from YCZ
-	function_z(allFamilies,allIndividuals);
+	function_z.US_test(allFamilies,allIndividuals);
 }
 
 
