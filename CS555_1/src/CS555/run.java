@@ -52,7 +52,8 @@ public class run {
 		System.out.println("US 01 Dates before current date	Dates (birth, marriage, divorce, death) should not be after the current date");
 		SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
 		//Us from ZYC
-        
+        //US from YCZ
+	function_z(allFamilies,allIndividuals);
 }
 
 
