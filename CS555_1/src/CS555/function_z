@@ -20,7 +20,7 @@ public class function_z {
 				sonname=I.get(num).getName();
 				namelist=sonname.split(" ");
 				if(namelist[namelist.length-1]!=failyname){
-					System.out.println("US16 Error:The "+f.id+"th family's "+num+"th son's last name is wrong");	
+					System.out.println("US16 Error:The "+f.id+"th family's "+"th son's last name is wrong");	
 					namelist[namelist.length-1]=failyname;
 				}
 				sonname="";
