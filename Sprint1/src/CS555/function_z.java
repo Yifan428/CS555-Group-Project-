@@ -49,6 +49,6 @@ public class function_z {
 			check_num(f.get(i));
 		//System.out.println("US16");
 		for(int i=0;i<f.size();i++)
-			check_male_name(f.get(i),I);
+			check_male_name(f.get(i),I);  
 	}
 }
