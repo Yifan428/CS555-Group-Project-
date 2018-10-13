@@ -20,7 +20,7 @@ public class function_z {
 				sonname=I.get(num).getName();
 				namelist=sonname.split(" ");
 				if(namelist[namelist.length-1]!=failyname){
-					System.out.println("ERROR: FAMILY: US16: The F"+f.id+" family's man's last name is not same ");	
+					System.out.println("ERROR: FAMILY: US16: The "+f.id+" family's man's last name is not same ");	
 					namelist[namelist.length-1]=failyname;
 				} 
 				sonname="";
@@ -40,7 +40,7 @@ public class function_z {
 		if(f.childrenId==null)
 			return;
 		if(f.childrenId.size()>5)
-			System.out.println("ERROR: FAMILY: US14 The F"+f.id+" family have more than 5 child");
+			System.out.println("ERROR: FAMILY: US14 The "+f.id+" family have more than 5 child");
 	}
 	public static void US_test(List<Family> f, List<Individual> I){
 		//System.out.println("US14:");
