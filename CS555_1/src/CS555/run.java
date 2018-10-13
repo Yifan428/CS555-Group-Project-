@@ -47,11 +47,10 @@ public class run {
         US_shi.printUS03(US_shi.US03(allIndividuals));
         //Us from JL
         US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
-        System.out.println("US 22 Unique IDs	 All individual IDs should be unique and all family IDs should be unique");
-		SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
-		System.out.println("US 01 Dates before current date	Dates (birth, marriage, divorce, death) should not be after the current date");
-		SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
-		//Us from ZYC
+        System.out.println("US 22 Unique IDs: All individual IDs should be unique and all family IDs should be unique");
+	SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
+	System.out.println("US 01 Dates before current date: Dates (birth, marriage, divorce, death) should not be after the current date");
+	SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
         //US from YCZ
 	function_z.US_test(allFamilies,allIndividuals);
 }
