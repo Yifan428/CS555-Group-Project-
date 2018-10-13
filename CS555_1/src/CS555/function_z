@@ -33,4 +33,11 @@ public class function_z {
 		if(f.childrenId.size()>5)
 			System.out.println("family"+f.id+"have more than 5 child");
 	}
+	
+	public static void US_test(Family f, List<Individual> I){
+		System.out.println("US14:");
+		check_num(f);
+		System.out.println("US16");
+		check_male_name(f,I);
+	}
 }
