@@ -22,7 +22,7 @@ public class function_z {
 				if(namelist[namelist.length-1]!=failyname){
 					System.out.println("ERROR: FAMILY: US16: The F"+f.id+" family's man's last name is not same ");	
 					namelist[namelist.length-1]=failyname;
-				}
+				} 
 				sonname="";
 				for(int x=0;x<namelist.length;x++)
 				{
