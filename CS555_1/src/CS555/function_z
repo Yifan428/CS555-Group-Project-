@@ -1,21 +1,28 @@
 package CS555;
-import java.util.Vector;
+
 import java.util.List;
+
 public class function_z {
 	public static void check_male_name(Family f,List<Individual> I)//male same name
 	{ 
 		String name[]=f.getHusbandName().split(" ");
 		String failyname=name[name.length-1];
+		if(f.childrenId==null)
+			return;
 		for(int i=0;i<f.childrenId.size();i++)
 		{
-			int num=Integer.parseInt((f.childrenId.get(i)));
-			if(I.get(num).gender.equals("Male"))
+			String childid = f.childrenId.get(i);
+			int num=Integer.parseInt((childid.substring(2,childid.length()-2)));
+			if(I.get(num).gender.compareTo("M")==1)
 			{
 				String sonname;
 				String[] namelist;
 				sonname=I.get(num).getName();
 				namelist=sonname.split(" ");
-				namelist[namelist.length-1]=failyname;
+				if(namelist[namelist.length-1]!=failyname){
+					System.out.println("US16 Error:The "+f.id+"th family's "+num+"th son's last name is wrong");	
+					namelist[namelist.length-1]=failyname;
+				}
 				sonname="";
 				for(int x=0;x<namelist.length;x++)
 				{
@@ -30,14 +37,19 @@ public class function_z {
 	}
 	public static void check_num(Family f)// children <=5
 	{
+		if(f.childrenId==null)
+			return;
 		if(f.childrenId.size()>5)
-			System.out.println("family"+f.id+"have more than 5 child");
+			System.out.println("US14 Error:family "+f.id+" have more than 5 child");
 	}
-	
-	public static void US_test(Family f, List<Individual> I){
+	public static void US_test(List<Family> f, List<Individual> I){
 		System.out.println("US14:");
-		check_num(f);
+		System.out.println("Family with more than 5 child in the same time is:");
+		for(int i=0;i<f.size();i++)
+			check_num(f.get(i));
 		System.out.println("US16");
-		check_male_name(f,I);
+		for(int i=0;i<f.size();i++)
+			check_male_name(f.get(i),I);
 	}
 }
+
