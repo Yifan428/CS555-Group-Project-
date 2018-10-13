@@ -19,5 +19,5 @@ Jinliu Yang
 ## Sprint1
 
 ```
-    Run run.java in the Sprint1 Folder
+    To show all the spint1 user stories, run run.java in the Sprint1 folder.
 ```
