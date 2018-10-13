@@ -44,7 +44,7 @@ public class function_z {
 	}
 	public static void US_test(List<Family> f, List<Individual> I){
 		System.out.println("US14:");
-		System.out.println("Family with more than 5 child in the same time is:");
+		System.out.println("Family with more than 5 child in the same time is:(empty means allright)");
 		for(int i=0;i<f.size();i++)
 			check_num(f.get(i));
 		System.out.println("US16");
