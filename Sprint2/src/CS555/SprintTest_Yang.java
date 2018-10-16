@@ -28,7 +28,46 @@ public class SprintTest_Yang {
 		File filename = new File(pathname);
 		Sprint1_Yang.printINDIAndFAMTables(filename);
 	}
+	@Test 
+	public static void testUserStory27(List<Individual> allIndividuals) {
+		
+			
+			System.out.println("US27: Include person's current age when listing individuals");
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", "----------",
+					"-------------------------", "-------", "------------", "-----", "-------", "------------",
+					"--------------------", "--------------------");
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", "ID", "Name",
+					"Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse");
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", "----------",
+					"-------------------------", "-------", "------------", "-----", "-------", "------------",
+					"--------------------", "--------------------");			
+			for (Individual currentIndv : allIndividuals) {
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n",
+					currentIndv.getId(), currentIndv.getName(), currentIndv.getGender(), currentIndv.getBirthDate(),
+					currentIndv.getAge(), currentIndv.isAlive(), currentIndv.getDeathDate(),
+					currentIndv.getChildFamilyIdsAsString(), currentIndv.getSpouseFamilyIdsAsString());
+		}
+	}
 	
+     @Test  
+     public static void testUserStory29(List<Individual> allIndividuals) {  
+		String ListYes = ""; 
+        String ListNo = ""; 
+		List<Individual> individuals = allIndividuals;  
+ 		for (int i = 0; i < individuals.size(); i++) {  
+ 			Individual individual = individuals.get(i);  
+                      if (individual.isAlive()== "False") { 
+            	        ListYes = "Y"; 
+            	        System.out.println("ERROR: INDIVIDUAL: US29: " + individual.getId() + ": " + "This individual has already deceased");
+                       }  else { 
+                	ListNo = "Y"; 
+                       }       
+              }  
+        if (ListYes.equals("") || ListNo.equals("") ) { 
+        	assertTrue("ERROR: INDIVIDUALS: US29: Listing of all deceased individuals User Story processing is broken " ,true);  
+        } 
+ 	}
+		
     @Test
     public static void testUserStory22(List<Individual> allIndividuals, List<Family> allFamilies) {
     	List<Individual> individuals = allIndividuals;
