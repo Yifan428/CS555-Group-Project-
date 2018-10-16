@@ -21,10 +21,20 @@ public class Sprint1_Yang {
 	static List<Individual> allIndividuals = new ArrayList<Individual>();
 	static List<Family> allFamilies = new ArrayList<Family>();
 
-	
-	//Sprint 1 
-	//US22
-    public static boolean uniqueId(List<String> ID) {
+     	//Sprint 2
+	//US29
+	public List<Individual> getDeceased() {
+    	 List<Individual> res = new ArrayList<Individual>();
+    	 for (Individual i : allIndividuals)
+    		 if (i.isAlive()== "False")
+    			 res.add(i);
+    	 return res;
+     }
+
+    
+    	//Sprint 1 
+   	//US22
+    	public static boolean uniqueId(List<String> ID) {
 		ArrayList<String> list = new ArrayList<String>();
 		for (String id : ID) {
 			if (list.contains(id)) return false;
@@ -34,7 +44,7 @@ public class Sprint1_Yang {
 	}
     
 	//US01 
-    public static boolean validateDate(String inputDate) { 
+    	public static boolean validateDate(String inputDate) { 
     	
  		try { 
  			if (inputDate.equalsIgnoreCase("NA")) {
