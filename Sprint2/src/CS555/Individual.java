@@ -119,6 +119,28 @@ public class Individual {
 			return "NA";
 	}
 
+	public String getmarryTodeathAge() {
+		if(marriageDate != null) {
+	
+			String[] mdar = marriageDate.split(" ");
+			
+			int mdint= Integer.parseInt(mdar[2]);
+			Calendar calm =Calendar.getInstance();
+			calm.set(Calendar.YEAR,mdint);
+			
+			if(deathDate != null) {
+				
+				String[] ddar = deathDate.split(" ");
+				
+				int ddint= Integer.parseInt(ddar[2]);
+				Calendar cald =Calendar.getInstance();
+				cald.set(Calendar.YEAR,ddint);
+				
+				return ""+ (cald.get(Calendar.YEAR) -calm.get(Calendar.YEAR));
+			} 
+	return "NA";
+	}
+		
 	public String getSpouseFamilyIdsAsString() {
 		if( spouseFamilyIds != null && spouseFamilyIds.size() > 0 ) {
 			String value = "{";
