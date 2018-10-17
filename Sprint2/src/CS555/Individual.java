@@ -140,6 +140,68 @@ public class Individual {
 			} 
 	return "NA";
 	}
+
+   //This two functions add from Yongchang Yao 10-16-2018
+		//New indvidual to get date fomart brithday
+	public LocalDate Getbrithtime() {
+		
+		String[] bdar = birthDate.split(" ");		
+	        
+		switch(bdar[1]){
+	        case "JAN":
+	        	bdar[1] = "1";
+	            break;	       
+	        case "FEB":
+	        	bdar[1] = "2";
+	        	break;
+	        case "MAR":
+	        	bdar[1] = "3";
+	        	break;
+	        case "APR":
+	        	bdar[1] = "4";
+	        	break;
+	        case "MAY":
+	        	bdar[1] = "5";
+	        	break;
+	        case "JUN":
+	        	bdar[1] = "6";
+	        	break;
+	        case "JUL":
+	        	bdar[1] = "7";
+	        	break;
+	        case "AUG":
+	        	bdar[1] = "8";
+	        	break;
+	        case "SEP":
+	        	bdar[1] = "9";
+	        	break;
+	        case "OCT":
+	        	bdar[1] = "10";
+	        	break;
+	        case "NOV":
+	        	bdar[1] = "11";
+	        	break;
+	        case "DEC":
+	        	bdar[1] = "12";
+	        	break;
+	            
+	        default:
+	            ;break;
+	        }
+		LocalDate brithday = LocalDate.of(Integer.parseInt(bdar[2]), Integer.parseInt(bdar[1]), Integer.parseInt(bdar[0]));
+		
+		return brithday;	
+		
+	}
+	
+	public int Getdaysfrombrith() {
+		
+		return (int) Getbrithtime().until(LocalDate.now(), ChronoUnit.DAYS);
+	}
+//Done 10-16-2018
+
+
+
 		
 	public String getSpouseFamilyIdsAsString() {
 		if( spouseFamilyIds != null && spouseFamilyIds.size() > 0 ) {
@@ -191,3 +253,4 @@ public class Individual {
 	
 	
 }
+

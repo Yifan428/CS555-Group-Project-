@@ -41,7 +41,10 @@ public class run {
         List<Family> allFamilies = Project03.getFamilies();
         //Us from YYC
         Story_YongchangYao.printUS30(Story_YongchangYao.US30(allIndividuals, allFamilies));
-        Story_YongchangYao.printUS31(Story_YongchangYao.US31(allIndividuals, allFamilies));    
+        Story_YongchangYao.printUS31(Story_YongchangYao.US31(allIndividuals, allFamilies));
+        Story_YongchangYao.printUS32(Story_YongchangYao.US32(allIndividuals, allFamilies));        
+        Story_YongchangYao.printUS33(Story_YongchangYao.US33(allIndividuals, allFamilies));
+
         //Us from SYF   
         US_shi.printUS03(US_shi.US03(allIndividuals));
         US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
@@ -58,4 +61,5 @@ public class run {
 
 
 }
+
 

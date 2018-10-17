@@ -10,6 +10,8 @@ import static org.junit.Assert.assertTrue;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -122,6 +124,50 @@ public class Story_YongchangYao {
 		return tempIndividuals;		
 	}
 	
+	
+	//US 32 List Multiple births
+	
+	public static List<Individual> US32(List<Individual> allIndividuals, List<Family> allFamilies) {
+		List<Individual> tempIndividuals = new ArrayList<Individual>();		
+		ArrayList<String> tempId = new ArrayList<String>();
+
+		for (Family fam : allFamilies) {
+			tempId.add(fam.getHusbandId());
+			tempId.add(fam.getWifeId());
+		}	
+		for (Individual indi : allIndividuals) {
+			for (Individual indi2 : allIndividuals) {
+				if (indi.getBirthDate().equals(indi2.getBirthDate())&&indi.getChildFamilyIdsAsString().equals(indi2.getChildFamilyIdsAsString())
+						&&(indi.getName().equals(indi2.getName())==false)) {
+					tempIndividuals.add(indi);
+					
+				}
+			}
+		}
+		earseDuplicate(tempIndividuals);
+		return tempIndividuals;
+	}
+	
+	
+	//US 33 List Recent births
+	
+	public static List<Individual> US33(List<Individual> allIndividuals, List<Family> allFamilies) {
+		List<Individual> tempIndividuals = new ArrayList<Individual>();		
+		ArrayList<String> tempId = new ArrayList<String>();
+
+		for (Individual indi : allIndividuals) {							 
+    	if(indi.Getbrithtime().until(LocalDate.now(), ChronoUnit.DAYS)<30&&indi.Getbrithtime().until(LocalDate.now(), ChronoUnit.DAYS)>=0) {
+    		tempIndividuals.add(indi);
+			}
+		}
+		earseDuplicate(tempIndividuals);
+		return tempIndividuals;
+	}	
+	
+	
+	
+	
+	
 
 	public static void printUS30(List<Individual> tempIndividuals) {
 		
@@ -160,6 +206,48 @@ public class Story_YongchangYao {
 					currentIndv.getId(), currentIndv.getName(), currentIndv.getGender(), currentIndv.getBirthDate(),
 					currentIndv.getAge(), currentIndv.isAlive(), currentIndv.getDeathDate(),
 					currentIndv.getChildFamilyIdsAsString(), currentIndv.getSpouseFamilyIdsAsString());
+			
+		}
+	}	
+	
+	public static void printUS32(List<Individual> tempIndividuals) {
+		System.out.println(
+				"US32 List all Multiple births in a GEDCOM file ");
+		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", "----------",
+				"-------------------------", "-------", "------------", "-----", "-------", "------------",
+				"--------------------", "--------------------");
+		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", "ID", "Name",
+				"Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse");
+		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", "----------",
+				"-------------------------", "-------", "------------", "-----", "-------", "------------",
+				"--------------------", "--------------------");
+		for (int i = 0; i < tempIndividuals.size(); i++) {
+			Individual currentIndv = tempIndividuals.get(i);
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n",
+					currentIndv.getId(), currentIndv.getName(), currentIndv.getGender(), currentIndv.getBirthDate(),
+					currentIndv.getAge(), currentIndv.isAlive(), currentIndv.getDeathDate(),
+					currentIndv.getChildFamilyIdsAsString(), currentIndv.getSpouseFamilyIdsAsString());
+			
+		}
+	}	
+	
+	public static void printUS33(List<Individual> tempIndividuals) {
+		System.out.println(
+				"US33 List all Recent births <30 days in a GEDCOM file ");
+		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|%10$-12s|\n", "----------",
+				"-------------------------", "-------", "------------", "-----", "-------", "------------",
+				"--------------------", "--------------------","------------");
+		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|%10$-12s|\n", "ID", "Name",
+				"Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse","Daysfrombrith");
+		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|%10$-12s|\n", "----------",
+				"-------------------------", "-------", "------------", "-----", "-------", "------------",
+				"--------------------", "--------------------","------------");
+		for (int i = 0; i < tempIndividuals.size(); i++) {
+			Individual currentIndv = tempIndividuals.get(i);
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|%10$-12s|\n",
+					currentIndv.getId(), currentIndv.getName(), currentIndv.getGender(), currentIndv.getBirthDate(),
+					currentIndv.getAge(), currentIndv.isAlive(), currentIndv.getDeathDate(),
+					currentIndv.getChildFamilyIdsAsString(), currentIndv.getSpouseFamilyIdsAsString(),currentIndv.Getdaysfrombrith());
 			
 		}
 	}	
