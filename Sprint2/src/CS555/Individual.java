@@ -2,7 +2,9 @@ package CS555;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -138,6 +140,7 @@ public class Individual {
 				
 				return ""+ (cald.get(Calendar.YEAR) -calm.get(Calendar.YEAR));
 			} 
+		}
 	return "NA";
 	}
 

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-public class Sprint1_Yang {
+public class Sprint2_Yang {
 	static List<Individual> allIndividuals = new ArrayList<Individual>();
 	static List<Family> allFamilies = new ArrayList<Family>();
 

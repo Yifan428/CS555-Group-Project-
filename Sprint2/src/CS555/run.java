@@ -48,15 +48,15 @@ public class run {
         //Us from SYF   
         US_shi.printUS03(US_shi.US03(allIndividuals));
         US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
-	sprint2_shi.printUS07(sprint2_shi.US07(allIndividuals));
-        sprint2_shi.printUS05(sprint2_shi.US05(allIndividuals,allFamilies));
+        sprint2_shi.printUS07(sprint2_shi.US07(allIndividuals));
+        //sprint2_shi.printUS05(sprint2_shi.US05(allIndividuals,allFamilies));
         //Us from JL
         SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
         SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
-	SprintTest_Yang.testUserStory27(allIndividuals);
-	SprintTest_Yang.testUserStory29(allIndividuals);
+        SprintTest_Yang.testUserStory27(allIndividuals);
+        SprintTest_Yang.testUserStory29(allIndividuals);
         //US from YCZ   
-	function_z.US_test(allFamilies,allIndividuals);
+        function_z.US_test(allFamilies,allIndividuals);
 }
 
 
