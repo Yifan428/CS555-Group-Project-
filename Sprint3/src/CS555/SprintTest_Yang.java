@@ -45,18 +45,24 @@ public class SprintTest_Yang {
 
 	@Test 
 	public static void testUserStory21(List<Family> allFamilies) { 
-		List<Family> families = allFamilies;		
+		List<Family> families = allFamilies;	
+		int num = 0;
 		for (int i = 0; i < families.size(); i++) { 
 			Family family = families.get(i); 
 			String husbandId = family.getHusbandId(); 
 			String wifeId = family.getWifeId();
 			if(Sprint1_Yang.validateHusGender(husbandId)) {
 				System.out.println("ERROR: FAMILY: US21: Husband " + husbandId + " has the wrong gender");
+				num = num +1;
 			}
 			if(Sprint1_Yang.validateWifeGender(wifeId)) {
 				System.out.println("ERROR: FAMILY: US21: Wife " + wifeId +  " has the wrong gender");
+				num = num +1;
 			}
 		} 
+		if (num == 0) {
+			System.out.println("ERROR: FAMILY: US21: There is no wrong gender in family");
+		}
 	}
 	
 	@Test 
