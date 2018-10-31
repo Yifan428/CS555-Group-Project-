@@ -17,9 +17,42 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-public class Sprint2_Yang {
+public class Sprint3_Yang {
 	static List<Individual> allIndividuals = new ArrayList<Individual>();
 	static List<Family> allFamilies = new ArrayList<Family>();
+	
+	//Sprint 3
+	//US21
+	public static boolean validateHusGender(String id) {
+
+		for (int i = 0; i < allIndividuals.size(); i++) { 
+			Individual individual = allIndividuals.get(i); 
+			if(individual.getId().equals(id) && individual.getGender().equals("F")) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public static boolean validateWifeGender(String id) {
+
+		for (int i = 0; i < allIndividuals.size(); i++) { 
+			Individual individual = allIndividuals.get(i); 
+			if(individual.getId().equals(id) && individual.getGender().equals("M")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	//US38
+	public static boolean getUpcomingBirthday(String birthday) {
+		
+		if(birthday.contains("NOV")) {
+			return true;
+		}
+		
+		return false; 
+	}
 
      	//Sprint 2
 	//US29
