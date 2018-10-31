@@ -1,4 +1,4 @@
-ppackage CS555;
+package CS555;
 
 import java.io.BufferedReader;
 import java.io.File;
