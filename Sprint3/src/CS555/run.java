@@ -53,6 +53,7 @@ public class run {
         sprint2_shi.printUS07(sprint2_shi.US07(allIndividuals));
         //sprint2_shi.printUS05(sprint2_shi.US05(allIndividuals,allFamilies));
         sprint3_shi.printUS10(sprint3_shi.US10(allIndividuals,allFamilies));
+	sprint3_shi.printUS12(sprint3_shi.US12(allIndividuals, allFamilies));
          
         //Us from JL
         SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
