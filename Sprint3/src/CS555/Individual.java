@@ -97,55 +97,7 @@ public class Individual {
 		return "NA";
 	}
 	
-	public String getmarrAge() {
-		//try {
-			if(birthDate != "") {
-//				
-				String[] bdar = birthDate.split(" ");
-				
-				int bdint= Integer.parseInt(bdar[2]);
-				Calendar calb =Calendar.getInstance();
-				calb.set(Calendar.YEAR,bdint);
-				
-				if(marriageDate != "NA") {
-					
-					String[] mdar = marriageDate.split(" ");
-					
-					int mdint= Integer.parseInt(mdar[2]);
-					Calendar calm =Calendar.getInstance();
-					calm.set(Calendar.YEAR,mdint);					
-					return ""+ (calm.get(Calendar.YEAR) -calb.get(Calendar.YEAR));
-				}else
-					return "NA";
-			}
-			return "NA";
-	}
-
-	public String getmarryTodeathAge() {
-		if(marriageDate != null) {
-	
-			String[] mdar = marriageDate.split(" ");
-			
-			int mdint= Integer.parseInt(mdar[2]);
-			Calendar calm =Calendar.getInstance();
-			calm.set(Calendar.YEAR,mdint);
-			
-			if(deathDate != null) {
-				
-				String[] ddar = deathDate.split(" ");
-				
-				int ddint= Integer.parseInt(ddar[2]);
-				Calendar cald =Calendar.getInstance();
-				cald.set(Calendar.YEAR,ddint);
-				
-				return ""+ (cald.get(Calendar.YEAR) -calm.get(Calendar.YEAR));
-			} 
-		}
-	return "NA";
-	}
-
-   //This two functions add from Yongchang Yao 10-16-2018
-		//New indvidual to get date fomart brithday
+	//New indvidual to get date fomart brithday
 	public LocalDate Getbrithtime() {
 		
 		String[] bdar = birthDate.split(" ");		
@@ -201,11 +153,92 @@ public class Individual {
 		
 		return (int) Getbrithtime().until(LocalDate.now(), ChronoUnit.DAYS);
 	}
-//Done 10-16-2018
 
-
-
+	//Sprint 3 new add functions
+	public LocalDate Getdeadtime() {
 		
+		String[] ddar = deathDate.split(" ");		
+	        
+		switch(ddar[1]){
+	        case "JAN":
+	        	ddar[1] = "1";
+	            break;	       
+	        case "FEB":
+	        	ddar[1] = "2";
+	        	break;
+	        case "MAR":
+	        	ddar[1] = "3";
+	        	break;
+	        case "APR":
+	        	ddar[1] = "4";
+	        	break;
+	        case "MAY":
+	        	ddar[1] = "5";
+	        	break;
+	        case "JUN":
+	        	ddar[1] = "6";
+	        	break;
+	        case "JUL":
+	        	ddar[1] = "7";
+	        	break;
+	        case "AUG":
+	        	ddar[1] = "8";
+	        	break;
+	        case "SEP":
+	        	ddar[1] = "9";
+	        	break;
+	        case "OCT":
+	        	ddar[1] = "10";
+	        	break;
+	        case "NOV":
+	        	ddar[1] = "11";
+	        	break;
+	        case "DEC":
+	        	ddar[1] = "12";
+	        	break;
+	            
+	        default:
+	            ;break;
+	        }
+		LocalDate deathday = LocalDate.of(Integer.parseInt(ddar[2]), Integer.parseInt(ddar[1]), Integer.parseInt(ddar[0]));
+		
+		return deathday;	
+		
+	}
+	
+public int Getdaysfromdeath() {
+		
+		return (int) Getdeadtime().until(LocalDate.now(), ChronoUnit.DAYS);
+	}
+
+	
+	
+	
+	
+	public String getmarrAge() {
+		//try {
+			if(birthDate != "") {
+//				
+				String[] bdar = birthDate.split(" ");
+				
+				int bdint= Integer.parseInt(bdar[2]);
+				Calendar calb =Calendar.getInstance();
+				calb.set(Calendar.YEAR,bdint);
+				
+				if(marriageDate != "NA") {
+					
+					String[] mdar = marriageDate.split(" ");
+					
+					int mdint= Integer.parseInt(mdar[2]);
+					Calendar calm =Calendar.getInstance();
+					calm.set(Calendar.YEAR,mdint);					
+					return ""+ (calm.get(Calendar.YEAR) -calb.get(Calendar.YEAR));
+				}else
+					return "NA";
+			}
+			return "NA";
+	}
+
 	public String getSpouseFamilyIdsAsString() {
 		if( spouseFamilyIds != null && spouseFamilyIds.size() > 0 ) {
 			String value = "{";
@@ -256,4 +289,3 @@ public class Individual {
 	
 	
 }
-

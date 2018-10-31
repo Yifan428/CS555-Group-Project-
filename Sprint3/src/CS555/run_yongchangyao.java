@@ -42,16 +42,28 @@ public class run_yongchangyao {
         //Us from YYC
         Story_YongchangYao.printUS30(Story_YongchangYao.US30(allIndividuals, allFamilies));
         
-        Story_YongchangYao.printUS31(Story_YongchangYao.US31(allIndividuals, allFamilies));    
-        //Us from SYF   
-        US_shi.printUS03(US_shi.US03(allIndividuals));
-        //Us from JL
-        US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
-        System.out.println("US 22 Unique IDs	 All individual IDs should be unique and all family IDs should be unique");
-		SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
-		System.out.println("US 01 Dates before current date	Dates (birth, marriage, divorce, death) should not be after the current date");
-		SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
-		//Us from ZYC
+        Story_YongchangYao.printUS31(Story_YongchangYao.US31(allIndividuals, allFamilies));
+        
+        Story_YongchangYao.printUS32(Story_YongchangYao.US32(allIndividuals, allFamilies));
+        
+        Story_YongchangYao.printUS33(Story_YongchangYao.US33(allIndividuals, allFamilies));
+        
+        Story_YongchangYao.printUS36(Story_YongchangYao.US36(allIndividuals, allFamilies));
+        
+        
+        Story_YongchangYao.printUS37(Story_YongchangYao.US37(allIndividuals, allFamilies));
+        
+        
+        
+//        //Us from SYF   
+//        US_shi.printUS03(US_shi.US03(allIndividuals));
+//        //Us from JL
+//        US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
+//        System.out.println("US 22 Unique IDs	 All individual IDs should be unique and all family IDs should be unique");
+//		SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
+//		System.out.println("US 01 Dates before current date	Dates (birth, marriage, divorce, death) should not be after the current date");
+//		SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
+//		//Us from ZYC
         
 }
 

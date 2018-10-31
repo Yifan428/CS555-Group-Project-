@@ -121,6 +121,21 @@ public class Project03 {
 						}
 					}
 					
+					if(tag.equals("CHIL")) {
+						if(currentFamily.getChildrenname() == null) {
+							List<String> childrennames = new ArrayList<String>();
+							currentFamily.setChildrename(childrennames);
+						currentFamily.getChildrenname().add(value);
+						}
+						else {
+						
+						currentFamily.getChildrenname().add(value);
+						for(String str : currentFamily.getChildrenname()) {
+							str.replaceAll("@", "");
+						}
+						}
+					}
+					
 					if(tag.equals("FAMS")) {
 						indv.getSpouseFamilyIds().add(value);
 						
@@ -199,10 +214,15 @@ public class Project03 {
 	    			"ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children");
 	    	System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
 	    			"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
-	    	for(Family fam: allFamilies)
+	    	for(Family fam: allFamilies) {
 	    		System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-10s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
 	    				fam.getId(), fam.getMarriageDate() == null ? "NA" : fam.getMarriageDate(), fam.getDivorceDate() == null ? "NA" : fam.getDivorceDate(), fam.getHusbandId(),
-	    								fam.getHusbandName(),fam.getWifeId(), fam.getWifeName(),fam.getChildrenIdAsString());
+	    								fam.getHusbandName(),fam.getWifeId(), fam.getWifeName(),fam.getChildrenname());
+//	    	if(fam.getChildrenname().contains("@I1@")) {
+//	    		System.out.println("My home");
+//	    		
+//	    	}
+	    	}
 	    	System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-10s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
 	    			"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
 	    							

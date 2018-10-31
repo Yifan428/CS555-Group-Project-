@@ -15,6 +15,8 @@ public class Family {
 	String wifeId;
 	String wifeName;
 	List<String> childrenId;
+	//Sprint3 new add
+	List<String> childrenname;
 	
 	public String getId() {
 		return id;
@@ -89,5 +91,35 @@ public class Family {
 
 	public void setChildrenId(List<String> childrenId) {
 		this.childrenId = childrenId;
+	}
+	//Sprit3 new add
+	public List<String> getChildrenname() {
+//		for(String str : childrenname) {
+//			str.replaceAll("@", "");
+//		}
+		return childrenname;
+	}
+	
+	public void setChildrename(List<String> childrenname) {
+		this.childrenname = childrenname;
+	}
+	
+	public String getChildrenNameAsString() {
+		if( childrenname != null && childrenname.size() > 0 ) {
+			String value = "{";
+			boolean first = true;
+			for(String str : childrenname) {
+				if(!first) {
+					value += ",";
+				}
+				value += str.replaceAll("@", "'");
+				
+				first = false;
+			}
+			value += "}";
+			return value;
+		} else {
+			return "NA";
+		}
 	}
 }

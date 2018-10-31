@@ -154,5 +154,38 @@ public class Storytest_YYC {
 					int size = Story_YongchangYao.US33(allIndividuals30, allFamilies30).size();
 					assertEquals(expec,  size);	
 		}	
-	
+	@Test
+	//Test minimum age of all not married people  
+		public void testminage36() {
+			List<Individual> allIndividuals30 = read.getIndividuals();
+	        List<Family> allFamilies30 = read.getFamilies();    
+	      
+			 ArrayList<String> testnamenumber30 = new ArrayList<String>();
+					for (int i = 0; i < Story_YongchangYao.US36(allIndividuals30, allFamilies30).size(); i++) {
+				Individual currentIndv = Story_YongchangYao.US36(allIndividuals30, allFamilies30).get(i);
+				testnamenumber30.add(currentIndv.getAge());		
+			}
+					int expec = 1;
+//					System.out.println("bbbbaaaaa" + testnamenumber30);
+//					System.out.println(Collections.max(testnamenumber30));
+					int size = Story_YongchangYao.US36(allIndividuals30, allFamilies30).size();
+					assertEquals(expec,  size);	
+		}	
+	@Test
+	//Test minimum age of all not married people  
+		public void testminage37() {
+			List<Individual> allIndividuals30 = read.getIndividuals();
+	        List<Family> allFamilies30 = read.getFamilies();    
+	      
+			 ArrayList<String> testnamenumber30 = new ArrayList<String>();
+//					for (int i = 0; i < Story_YongchangYao.US37(allIndividuals30, allFamilies30).size(); i++) {
+//				Individual currentIndv = Story_YongchangYao.US37(allIndividuals30, allFamilies30).get(i);
+//				testnamenumber30.add(currentIndv.getAge());		
+//			}
+					int expec = 2;
+//					System.out.println("bbbbaaaaa" + testnamenumber30);
+//					System.out.println(Collections.max(testnamenumber30));
+					int size = Story_YongchangYao.US37(allIndividuals30, allFamilies30).size();
+					assertEquals(expec,  size);	
+		}	
 }
