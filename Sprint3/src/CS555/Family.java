@@ -17,6 +17,8 @@ public class Family {
 	List<String> childrenId;
 	//Sprint3 new add
 	List<String> childrenname;
+	int HusbandAge;
+	int WifeAge;
 	
 	public String getId() {
 		return id;
@@ -24,6 +26,22 @@ public class Family {
 	public void setId(String id) {
 		this.id = id;
 	}
+	//Added in Sprint 3
+	public void setHusbandAge(int age) {
+		this.HusbandAge = age;
+	}
+	public void setWifeAge(int age) {
+		this.WifeAge = age;
+	}
+	public int getHusbandAge() {
+		return HusbandAge;
+	}
+	public int getWifeAge() {
+		return WifeAge;
+	}
+	
+	
+	
 	public String getMarriageDate() {
 		return marriageDate == null ? "NA" : marriageDate;
 	}
