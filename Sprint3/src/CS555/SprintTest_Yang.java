@@ -26,8 +26,39 @@ public class SprintTest_Yang {
 	public SprintTest_Yang() {
 		String pathname = "Test_Family_Team wisdom of Mr Toad.ged"; 
 		File filename = new File(pathname);
-		Sprint2_Yang.printINDIAndFAMTables(filename);
+		Sprint3_Yang.printINDIAndFAMTables(filename);
 	}
+	
+	@Test
+	public static void testUserStory38(List<Individual> allIndividuals) {
+		List<Individual> individuals = allIndividuals;
+		for (int i = 0; i < individuals.size(); i++) { 
+			Individual individual = individuals.get(i); 
+			String birthday = individual.getBirthDate(); 
+			if(Sprint1_Yang.getUpcomingBirthday(birthday)) {
+				System.out.println("ERROR: INDIVIDUAL: US38: The birthday of " +  individual.getId() +  " occur in the next 30 days");
+			}
+		}
+
+	}
+
+
+	@Test 
+	public static void testUserStory21(List<Family> allFamilies) { 
+		List<Family> families = allFamilies;		
+		for (int i = 0; i < families.size(); i++) { 
+			Family family = families.get(i); 
+			String husbandId = family.getHusbandId(); 
+			String wifeId = family.getWifeId();
+			if(Sprint1_Yang.validateHusGender(husbandId)) {
+				System.out.println("ERROR: FAMILY: US21: Husband " + husbandId + " has the wrong gender");
+			}
+			if(Sprint1_Yang.validateWifeGender(wifeId)) {
+				System.out.println("ERROR: FAMILY: US21: Wife " + wifeId +  " has the wrong gender");
+			}
+		} 
+	}
+	
 	@Test 
 	public static void testUserStory27(List<Individual> allIndividuals) {
 		
