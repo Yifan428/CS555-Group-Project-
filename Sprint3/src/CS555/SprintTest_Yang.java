@@ -35,7 +35,7 @@ public class SprintTest_Yang {
 		for (int i = 0; i < individuals.size(); i++) { 
 			Individual individual = individuals.get(i); 
 			String birthday = individual.getBirthDate(); 
-			if(Sprint1_Yang.getUpcomingBirthday(birthday)) {
+			if(Sprint3_Yang.getUpcomingBirthday(birthday)) {
 				System.out.println("ERROR: INDIVIDUAL: US38: The birthday of " +  individual.getId() +  " occur in the next 30 days");
 			}
 		}
@@ -51,11 +51,11 @@ public class SprintTest_Yang {
 			Family family = families.get(i); 
 			String husbandId = family.getHusbandId(); 
 			String wifeId = family.getWifeId();
-			if(Sprint1_Yang.validateHusGender(husbandId)) {
+			if(Sprint3_Yang.validateHusGender(husbandId)) {
 				System.out.println("ERROR: FAMILY: US21: Husband " + husbandId + " has the wrong gender");
 				num = num +1;
 			}
-			if(Sprint1_Yang.validateWifeGender(wifeId)) {
+			if(Sprint3_Yang.validateWifeGender(wifeId)) {
 				System.out.println("ERROR: FAMILY: US21: Wife " + wifeId +  " has the wrong gender");
 				num = num +1;
 			}
@@ -115,7 +115,7 @@ public class SprintTest_Yang {
  			Individual individual = individuals.get(i); 
  			String indvID = individual.getId(); 
  			IndvID.add(indvID);
- 			if(!Sprint2_Yang.uniqueId(IndvID)) {
+ 			if(!Sprint3_Yang.uniqueId(IndvID)) {
  				System.out.println("ERROR: INDIVIDUAL: US22: There are same ID in the Individuals. ");
  				break;
  			}
@@ -124,7 +124,7 @@ public class SprintTest_Yang {
     		Family family = families.get(j); 
  			String famID = family.getId(); 
  			FamID.add(famID);
- 			if(!Sprint2_Yang.uniqueId(FamID)) {
+ 			if(!Sprint3_Yang.uniqueId(FamID)) {
  				System.out.println("ERROR: Family: US22: There are same ID in the Families. ");
  				break;
  			}
@@ -137,27 +137,27 @@ public class SprintTest_Yang {
  		for (int i = 0; i < individuals.size(); i++) { 
  			Individual individual = individuals.get(i); 
  			String birthday = individual.getBirthDate(); 
- 			if(Sprint2_Yang.validateDate(birthday)) {
+ 			if(Sprint3_Yang.validateDate(birthday)) {
  				System.out.println("ERROR: INDIVIDUAL: US01: " + individual.getId() + ": " + "Birthday " + birthday + " occurs in the future");
  			}
  
  			String death = individual.getDeathDate(); 
- 			if (Sprint2_Yang.validateDate(death)) { 
+ 			if (Sprint3_Yang.validateDate(death)) { 
  				System.out.println("ERROR: INDIVIDUAL: US01: " + individual.getId() + ": " + "DeathDate " + death + " occurs in the future");
  			} 
 
  		} 
  	
- 		List<Family> families = Sprint2_Yang.allFamilies; 
+ 		List<Family> families = Sprint3_Yang.allFamilies; 
  		for (int i = 0; i < families.size(); i++) { 
  			Family family = families.get(i); 
  			String marry = family.getMarriageDate(); 
- 			if(Sprint2_Yang.validateDate(marry)) {
+ 			if(Sprint3_Yang.validateDate(marry)) {
  				System.out.println("ERROR: FAMILY: US01: " + family.getId() + ": " + "Marriage date " + marry + " occurs in the future");
  			}
 
  			String divorce = family.getDivorceDate(); 
- 			if (Sprint2_Yang.validateDate(divorce)) { 
+ 			if (Sprint3_Yang.validateDate(divorce)) { 
  				System.out.println("ERROR: FAMILY: US01: " + family.getId() + ": " + "Divorce date " + divorce + " occurs in the future"); 
  			} 
  		} 
