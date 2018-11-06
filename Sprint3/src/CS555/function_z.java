@@ -59,9 +59,9 @@ public class function_z {
 	}
 	public static void check_num(Family f)// children <=5
 	{
-		if(f.childrenId==null)
+		if(f.childrenname==null)
 			return;
-		if(f.childrenId.size()>5) {
+		if(f.childrenname.size()>5) {
 			System.out.print("line "+ function_z.findwhichline(f.id));
 			System.out.println(" ERROR: FAMILY: US14 The F"+f.id+" family have more than 5 child");
 	}
@@ -208,5 +208,6 @@ public class function_z {
 	}
 	
 }
+
 
 
