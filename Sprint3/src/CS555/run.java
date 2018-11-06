@@ -51,7 +51,7 @@ public class run {
         US_shi.printUS03(US_shi.US03(allIndividuals));
         US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
         sprint2_shi.printUS07(sprint2_shi.US07(allIndividuals));
-        //sprint2_shi.printUS05(sprint2_shi.US05(allIndividuals,allFamilies));
+        sprint2_shi.printUS05(sprint2_shi.US05(allIndividuals,allFamilies));
         sprint3_shi.printUS10(sprint3_shi.US10(allIndividuals,allFamilies));
 	sprint3_shi.printUS12(sprint3_shi.US12(allIndividuals, allFamilies));
          
