@@ -41,8 +41,8 @@ public class function_z {
 				sonname=I.get(num).getName();
 				namelist=sonname.split(" ");
 				if(namelist[namelist.length-1]!=failyname){
-					System.out.print("line "+function_z.findwhichline(namelist[namelist.length-1])+" ");
-					System.out.println("Error: FAMILY: US16: The F"+f.id+" family's man's last name is not same ");	
+					System.out.print("line "+function_z.findwhichline(namelist[namelist.length-1]));
+					System.out.println(" ERROR: FAMILY: US16: The F"+f.id+" family's man's last name is not same ");	
 					namelist[namelist.length-1]=failyname;
 				}
 				sonname="";
@@ -63,7 +63,7 @@ public class function_z {
 			return;
 		if(f.childrenId.size()>5) {
 			System.out.print("line "+ function_z.findwhichline(f.id));
-			System.out.println("Error: FAMILY: US14 The F"+f.id+" family have more than 5 child");
+			System.out.println(" ERROR: FAMILY: US14 The F"+f.id+" family have more than 5 child");
 	}
 }
 	public static int findwhichline(String name) {
@@ -102,34 +102,34 @@ public class function_z {
 			Individual temp = I.get(i);
 			if(!function_z.Check_date(temp.birthDate)||!function_z.Check_date(temp.deathDate)) {
 				System.out.print("line "+ function_z.findwhichline(temp.id));
-				System.out.println("Error: INDIVIDUAL: US42 The "+temp.id+" individual have illegitimate_dates");
+				System.out.println(" ERROR: INDIVIDUAL: US42 The "+temp.id+" individual have illegitimate_dates");
 			}
 		}
 		for(int i=0;i<f.size();i++) {
 			Family temp = f.get(i);
 			if(!function_z.Check_date(temp.marriageDate)||!function_z.Check_date(temp.divorceDate)) {
 				System.out.print("line "+ function_z.findwhichline(temp.id));
-				System.out.println("Error: FAMILY: US42 The F"+temp.id+" Family have illegitimate_dates");
+				System.out.println(" ERROR: FAMILY: US42 The F"+temp.id+" Family have illegitimate_dates");
 			}
 		}
 	}
 	public static void Birth_before_marriage_of_parents(Family f,List<Individual> I) {
-		if(f.childrenId==null)
+		if(f.childrenname==null)
 			return;
 		long devoce = function_z.change_date(f.divorceDate).getTime();
 		long marry = function_z.change_date(f.marriageDate).getTime();
 		long nine = Long.parseLong("15634800000");
-		for(int i=0;i<f.childrenId.size();i++) {
-			String childid = f.childrenId.get(i);
-			int num=Integer.parseInt((childid.substring(2,childid.length()-2)));
-			long birthdate= function_z.change_date(I.get(num).birthDate).getTime();
+		for(int i=0;i<f.childrenname.size();i++) {
+			String childid = f.childrenname.get(i);
+			int num=Integer.parseInt((childid.substring(1,childid.length())));
+			long birthdate= function_z.change_date(I.get(num-1).birthDate).getTime();
 			if(birthdate-devoce>nine) {
 				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
-				System.out.println("Error: FAMILY: US8 The F"+f.id+" Family have someone birth after device 9 mon");
+				System.out.println(" ERROR: FAMILY: US8 The F"+f.id+" Family have someone birth after device 9 mon");
 			}
 			if(birthdate>marry) {
 				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
-				System.out.println("Error: FAMILY: US8 The F"+f.id+" Family have someone birth before marryage");
+				System.out.println(" ERROR: FAMILY: US8 The F"+f.id+" Family have someone birth before marryage");
 			}
 		}
 	}
@@ -190,17 +190,19 @@ public class function_z {
 		System.out.println("Same man in fanmily have same last name");
 		for(int i=0;i<f.size();i++)
 			check_male_name(f.get(i),I);
-		System.out.println("US41");
-		System.out.println("Include partial dates");
+		System.out.print("US41  ");
+		System.out.print("Include partial dates  ");
 		Individual I_test =new Individual();
 		I_test.setBirthDate("1986");
-		I_test.setDeathDate("2018-10");
+		I_test.setDeathDate("2018-10-32");
 		System.out.println("His birthdata and deathData is partial dates"+I_test.getBirthDate()+"     "+I_test.getDeathDate());
-		System.out.println("US42");
+		System.out.print("US42  ");
+		I.get(25).setBirthDate("32 JAN 2018");
 		System.out.println("Reject illegitimate dates");
 		function_z.Reject_illegitimate_dates(f, I);
-		System.out.println("US8");
-		System.out.println("Birth before marriage of parents");
+		System.out.print("US8");
+		I.get(25).setBirthDate("1 JAN 2018");
+		System.out.println("  Birth before marriage of parents");
 		for(int i=0;i<f.size();i++)
 			function_z.Birth_before_marriage_of_parents(f.get(i), I);
 	}
