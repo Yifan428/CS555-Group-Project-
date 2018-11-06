@@ -24,7 +24,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class run_yongchangyao {
-	String pathname = "Test_Family_Team wisdom of Mr Toad.ged"; 
+	String pathname = "Test_Family_Team wisdom of Mr Toad - git.ged"; 
 	File filename = new File(pathname);
     //Project03.printINDIAndFAMTables(filename);
     List<Individual> allIndividuals = Project03.getIndividuals();
@@ -32,7 +32,7 @@ public class run_yongchangyao {
 
 	public static void main(String[] args) {
 
-		String pathname = "Test_Family_Team wisdom of Mr Toad.ged"; 
+		String pathname = "Test_Family_Team wisdom of Mr Toad - git.ged"; 
 		
 		File filename = new File(pathname);
         Project03.printINDIAndFAMTables(filename);
@@ -46,13 +46,13 @@ public class run_yongchangyao {
         
         Story_YongchangYao.printUS32(Story_YongchangYao.US32(allIndividuals, allFamilies));
         
-        Story_YongchangYao.printUS33(Story_YongchangYao.US33(allIndividuals, allFamilies));
+        Story_YongchangYao.printUS35(Story_YongchangYao.US35(allIndividuals, allFamilies));
         
         Story_YongchangYao.printUS36(Story_YongchangYao.US36(allIndividuals, allFamilies));
         
         
         Story_YongchangYao.printUS37(Story_YongchangYao.US37(allIndividuals, allFamilies));
-        
+        Story_YongchangYao.printUS12(Story_YongchangYao.US12(allIndividuals, allFamilies));
         
         
 //        //Us from SYF   
