@@ -52,7 +52,7 @@ public class run_yongchangyao {
         
         
         Story_YongchangYao.printUS37(Story_YongchangYao.US37(allIndividuals, allFamilies));
-        Story_YongchangYao.printUS12(Story_YongchangYao.US12(allIndividuals, allFamilies));
+      
         
         
 //        //Us from SYF   
