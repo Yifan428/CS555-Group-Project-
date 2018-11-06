@@ -43,7 +43,7 @@ public class run {
         Story_YongchangYao.printUS30(Story_YongchangYao.US30(allIndividuals, allFamilies));
         Story_YongchangYao.printUS31(Story_YongchangYao.US31(allIndividuals, allFamilies));
         Story_YongchangYao.printUS32(Story_YongchangYao.US32(allIndividuals, allFamilies));        
-        Story_YongchangYao.printUS33(Story_YongchangYao.US33(allIndividuals, allFamilies));
+        Story_YongchangYao.printUS35(Story_YongchangYao.US35(allIndividuals, allFamilies));
         Story_YongchangYao.printUS36(Story_YongchangYao.US36(allIndividuals, allFamilies));        
         Story_YongchangYao.printUS37(Story_YongchangYao.US37(allIndividuals, allFamilies));
 
