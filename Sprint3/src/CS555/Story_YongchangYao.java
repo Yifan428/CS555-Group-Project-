@@ -59,6 +59,8 @@ public class Story_YongchangYao {
 	
 		for (Individual indi : allIndividuals) {
 			for (String tId : tempId) {
+				if(tId == null)
+					continue;
 				if (tId.equals(indi.getId())&&indi.isAlive().equals("True")) {
 					tempIndividuals.add(indi);
 				}
