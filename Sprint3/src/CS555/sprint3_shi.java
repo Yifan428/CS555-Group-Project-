@@ -29,6 +29,8 @@ public class sprint3_shi {
 		for (Individual indi : allIndividuals) {
 			int indiage = Integer.parseInt(indi.getAge());
 			for (String tId : tempId) {
+				if(tId == null)
+					continue;
 				if (tId.equals(indi.getId())&&indi.isAlive().equals("True") && indiage <= 14) {
 					tempIndividuals.add(indi);
 				}
