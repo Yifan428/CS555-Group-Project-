@@ -180,29 +180,21 @@ public class function_z {
 			return null;
 		}
 	}
-	public static void US_test(List<Family> f, List<Individual> I){
-		System.out.println("US14:");
-		System.out.println("Family with more than 5 child in the same time is:");
+		public static void US_test(List<Family> f, List<Individual> I){
+		System.out.println("US40:Include input line numbers");
 		for(int i=0;i<f.size();i++)
 			check_num(f.get(i));
-		System.out.println("US16&US40");
-		System.out.println("Include input line numbers");
-		System.out.println("Same man in fanmily have same last name");
+
 		for(int i=0;i<f.size();i++)
 			check_male_name(f.get(i),I);
-		System.out.print("US41  ");
-		System.out.print("Include partial dates  ");
+		System.out.print("ERROR: INDIVIDUAL: US41:");
 		Individual I_test =new Individual();
-		I_test.setBirthDate("1986");
+		I_test.setBirthDate(" 1986");
 		I_test.setDeathDate("2018-10-32");
 		System.out.println("His birthdata and deathData is partial dates"+I_test.getBirthDate()+"     "+I_test.getDeathDate());
-		System.out.print("US42  ");
 		I.get(25).setBirthDate("32 JAN 2018");
-		System.out.println("Reject illegitimate dates");
 		function_z.Reject_illegitimate_dates(f, I);
-		System.out.print("US8");
 		I.get(25).setBirthDate("1 JAN 2018");
-		System.out.println("  Birth before marriage of parents");
 		for(int i=0;i<f.size();i++)
 			function_z.Birth_before_marriage_of_parents(f.get(i), I);
 	}
