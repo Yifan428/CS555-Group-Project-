@@ -24,6 +24,8 @@ import javax.xml.crypto.Data;
 public class function_z {
 	public static void check_male_name(Family f,List<Individual> I)//male same name
 	{ 
+		if(f.getHusbandName()==null)
+			return;
 		String name[]=f.getHusbandName().split(" ");
 		String failyname=name[name.length-1];
 		if(f.childrenId==null)
