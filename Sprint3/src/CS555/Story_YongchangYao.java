@@ -216,6 +216,8 @@ public class Story_YongchangYao {
 		
 		for (Individual indi : tempIndividuals) {
 			for(Family fam : allFamilies) {
+				if(fam.getHusbandId()==null||fam.getWifeId()==null)
+					continue;
 				if(fam.getHusbandId().equals(indi.getId())) {
 					tempIddie.add(fam.getWifeId());
 					tempIddie.addAll(fam.getChildrenname());
