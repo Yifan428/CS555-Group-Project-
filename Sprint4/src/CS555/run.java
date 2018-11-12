@@ -46,22 +46,26 @@ public class run {
         Story_YongchangYao.printUS35(Story_YongchangYao.US35(allIndividuals, allFamilies));
         Story_YongchangYao.printUS36(Story_YongchangYao.US36(allIndividuals, allFamilies));        
         Story_YongchangYao.printUS37(Story_YongchangYao.US37(allIndividuals, allFamilies));
-
+        Story_YongchangYao.printUS38(Story_YongchangYao.US38(allIndividuals, allFamilies));
+        Story_YongchangYao.printUS39(Story_YongchangYao.US39(allIndividuals, allFamilies));
+        
         //Us from SYF   
         US_shi.printUS03(US_shi.US03(allIndividuals));
         US_shi.printUS02(US_shi.US02(allIndividuals,allFamilies));
         sprint2_shi.printUS07(sprint2_shi.US07(allIndividuals));
         sprint2_shi.printUS05(sprint2_shi.US05(allIndividuals,allFamilies));
         sprint3_shi.printUS10(sprint3_shi.US10(allIndividuals,allFamilies));
-	sprint3_shi.printUS12(sprint3_shi.US12(allIndividuals, allFamilies));
+        sprint3_shi.printUS12(sprint3_shi.US12(allIndividuals,allFamilies));
+        sprint4_shi.printUS06(sprint4_shi.US06(allIndividuals,allFamilies));
+
          
         //Us from JL
         SprintTest_Yang.testUserStory22(allIndividuals, allFamilies);
         SprintTest_Yang.testUserStory01(allIndividuals, allFamilies);
         SprintTest_Yang.testUserStory27(allIndividuals);
         SprintTest_Yang.testUserStory29(allIndividuals);
-	SprintTest_Yang.testUserStory21(allFamilies);
-	SprintTest_Yang.testUserStory38(allIndividuals);
+        SprintTest_Yang.testUserStory21(allFamilies);
+        SprintTest_Yang.testUserStory38(allIndividuals);
         
         //US from YCZ    
         function_z.US_test(allFamilies,allIndividuals);

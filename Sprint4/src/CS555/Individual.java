@@ -18,6 +18,7 @@ public class Individual {
 	String alive;
 	String deathDate;
 	String marriageDate;
+	String divorceDate;
 	List<String> spouseFamilyIds = new ArrayList<String>();
 	List<String> childFamilyIds = new ArrayList<String>();
 	//LocalDate brithanny;
@@ -68,8 +69,16 @@ public class Individual {
 		this.marriageDate = marriageDate;
 	}
 	
+	public void setDivorceDate(String divorceate) {
+		this.divorceDate = divorceDate;
+	}
+	
 	public String getMarriageDate() {
 		return marriageDate == null ? "NA" : marriageDate;
+	}
+	
+	public String getDivorceDate() {
+		return divorceDate == null ? "NA" : divorceDate;
 	}
 	
 	public String getAge() {
@@ -215,17 +224,11 @@ public int Getdaysfromdeath() {
 		
 		return (int) Getdeadtime().until(LocalDate.now(), ChronoUnit.DAYS);
 	}
-
-
-
-	
-	
-	
 	
 	public String getmarrAge() {
-		//try {
+
 			if(birthDate != "") {
-//				
+				
 				String[] bdar = birthDate.split(" ");
 				
 				int bdint= Integer.parseInt(bdar[2]);
@@ -268,6 +271,31 @@ public int Getdaysfromdeath() {
 		}
 	return "NA";
 	}
+	
+	public String getdivorceTodeathAge() {
+		if(divorceDate != null) {
+	
+			String[] ddar = divorceDate.split(" ");
+			
+			int ddint= Integer.parseInt(ddar[2]);
+			Calendar cald =Calendar.getInstance();
+			cald.set(Calendar.YEAR,ddint);
+			
+			if(deathDate != null) {
+				
+				String[] dddar = deathDate.split(" ");
+				
+				int dddint= Integer.parseInt(ddar[2]);
+				Calendar caldd =Calendar.getInstance();
+				caldd.set(Calendar.YEAR,ddint);
+				
+				return ""+ (caldd.get(Calendar.YEAR) -cald.get(Calendar.YEAR));
+			} 
+		}
+	return "NA";
+	}
+	
+	
 
 	public String getSpouseFamilyIdsAsString() {
 		if( spouseFamilyIds != null && spouseFamilyIds.size() > 0 ) {

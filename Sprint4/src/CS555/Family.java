@@ -112,9 +112,6 @@ public class Family {
 	}
 	//Sprit3 new add
 	public List<String> getChildrenname() {
-//		for(String str : childrenname) {
-//			str.replaceAll("@", "");
-//		}
 		return childrenname;
 	}
 	
