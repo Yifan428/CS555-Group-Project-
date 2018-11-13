@@ -37,18 +37,59 @@ public class sprint4_shi {
 		List<Family> tempFamilies = new ArrayList<Family>();
 		ArrayList<String> tempDivorceId = new ArrayList<String>();
 		ArrayList<String> tempId = new ArrayList<String>();
+		//First get all individuals' ids
+//		for (Individual indi : allIndividuals) {			
+//			tempId.add(indi.getId());			
+//		}
+//		//Then get all family member's id
+//		for (Family fam : allFamilies) {
+//			tempDivorceId.add(fam.getHusbandId());
+//			tempDivorceId.add(fam.getWifeId());
+//		}
+//		//Compare this two id arraies to get a new array
+//		ArrayList<String> tempDel = new ArrayList<String>();
+//
+//		for (String tId : tempId) {
+//			for (String tdivorceId : tempDivorceId) {
+//				if (tId.equals(tdivorceId)) {
+//					tempDel.add(tId);
+//				}
+//			}
+//		}
+//
+//		for (Individual indi : allIndividuals) {
+//			for (String tdivorceId : tempDivorceId) {
+//				if (indi.getId().equals(tdivorceId)) {
+//					tempIndividuals.add(indi);
+//				}
+//			}
+//		}
 
 		for (Individual indi : allIndividuals) {
 			for(Family fam : allFamilies) {					
 				if(fam.getHusbandId()==null||fam.getWifeId()==null)
 					continue;
+//				if(!fam.getMarriageDate().equals("NA")&&fam.getDivorceDate().equals("NA")) {
 				if(fam.getHusbandId().equals(indi.getId())||fam.getWifeId().equals(indi.getId())) {
 					indi.setDivorceDate(fam.getDivorceDate());
+//					if(LocalDate.now().until(indi.Getmarrytime(), ChronoUnit.DAYS)<30&&LocalDate.now().until(indi.Getmarrytime(), ChronoUnit.DAYS)>=0){
+//					indi.setdaytomarryanni((int)(LocalDate.now().until(indi.Getmarrytime(), ChronoUnit.DAYS)));	
+//					tempIndividuals.add(indi);
+//					}
 					tempIndividuals.add(indi);
 				}
-			}
+//				else if(fam.getWifeId().equals(indi.getId())) {
+//					indi.setMarriageDate(fam.getMarriageDate());
+//					if(!indi.getMarriageDate().equals("NA")&&LocalDate.now().until(indi.Getmarrytime(), ChronoUnit.DAYS)<30&&LocalDate.now().until(indi.Getmarrytime(), ChronoUnit.DAYS)>=0) {
+//					indi.setdaytomarryanni((int)(LocalDate.now().until(indi.Getmarrytime(), ChronoUnit.DAYS)));	
+//					tempIndividuals.add(indi);	
+//				}					
+//			}
 		}
+			}
+		//}
 
+		//earseDuplicateid(tempDel);
 		earseDuplicate(tempIndividuals);
 
 		return tempIndividuals;
@@ -85,6 +126,7 @@ public class sprint4_shi {
 				}
 			}
 		}
+			//System.out.println("LINE----------- "+ currentIndv.getName() + currentIndv.getDivorceDate());
 	}
 
 }
