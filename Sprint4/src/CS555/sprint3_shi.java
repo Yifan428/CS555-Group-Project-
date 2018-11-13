@@ -110,6 +110,7 @@ public class sprint3_shi {
 	
 	public static void printUS10(List<Individual> tempIndividuals) {
 		for (Individual currentIndv : tempIndividuals) {
+		System.out.print("LINE "+ function_z.findwhichline(currentIndv.getId())+ ": ");
 		System.out.println("ERROR: FAMILY: US10: " + currentIndv.getId() + ": " + currentIndv.getName() + "is married under 14");
 	}
 }
