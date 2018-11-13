@@ -133,6 +133,7 @@ public class function_z {
 			}
 		}
 	}
+
 	public static int change_to_num(String s) {//change month to num
 		Map<String, Integer> map = new HashMap<String,Integer>();
 		map.put("JAN", 1);map.put("FEB", 2);map.put("MAR", 3);map.put("APR", 4);map.put("MAY", 5);
@@ -180,7 +181,84 @@ public class function_z {
 			return null;
 		}
 	}
-		public static void US_test(List<Family> f, List<Individual> I){
+	public static void Birth_before_death_of_parents(Family f,List<Individual> I) {
+		if(f.childrenname==null)
+			return;
+		if(f.wifeId==null ||f.husbandId==null)
+			return;
+		Individual mother =I.get(Integer.parseInt((f.wifeId.substring(1,f.wifeId.length()))));
+		Individual father =I.get(Integer.parseInt((f.husbandId.substring(1,f.wifeId.length()))));
+		long mother_time,father_time;
+		if(mother.deathDate==null) {
+			mother_time = Long.MAX_VALUE/2;//safe max_alvalue
+		}
+		else {
+			mother_time = function_z.change_date(mother.deathDate).getTime();
+		}
+		if(father.deathDate==null) {
+			father_time = Long.MAX_VALUE/2;
+		}
+		else {
+			father_time = function_z.change_date(father.deathDate).getTime();
+			}
+		long nine = Long.parseLong("15634800000");
+		for(int i=0;i<f.childrenname.size();i++) {
+			String childid = f.childrenname.get(i);
+			int num=Integer.parseInt((childid.substring(1,childid.length())));
+			long birthdate= function_z.change_date(I.get(num-1).birthDate).getTime();
+			if(birthdate-father_time>nine) {
+				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
+				System.out.println(" ERROR: FAMILY: US9 The "+f.id+" Family have someone birth after death of father 9 month");
+			}
+			if(birthdate>mother_time) {
+				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
+				System.out.println(" ERROR: FAMILY: US9 The "+f.id+" Family have someone birth after death of mother");
+			}
+		}
+	}
+	public static int getid(String s) {
+		return Integer.parseInt((s.substring(1,s.length())))-1;
+	}
+	public static long departtime(String s1) {
+		if(s1 == null)
+		{
+			return Long.MAX_VALUE/2;
+		}
+		return function_z.change_to_num(s1);
+	}
+	public static void doublemarrage(List<Family> f, List<Individual> I){
+		for(int i =0;i<f.size()-1;i++) {
+			Family f1 = f.get(i);
+			if(f1.wifeId ==null||f1.husbandId == null)
+				continue;
+			for(int j=i+1;j<f.size();j++) {	
+				
+				Family f2 = f.get(j);
+				if(f2.wifeId ==null||f2.husbandId == null)
+					continue;
+				long depart1;
+				long depart2;
+				if(f1.husbandId.equals(f2.husbandId)||f1.wifeId.equals(f2.wifeId))
+				{
+					if(f1.marriageDate == null||f2.marriageDate==null)
+					{
+						continue;
+					}
+					long f1_m = function_z.change_date(f1.marriageDate).getTime();
+					long f2_m = function_z.change_date(f2.marriageDate).getTime();
+					depart1 = Math.min(function_z.departtime(f1.divorceDate), 
+							Math.min(function_z.getid(f1.husbandId), function_z.getid(f1.husbandId)));
+					depart2 = Math.min(function_z.departtime(f2.divorceDate), 
+							Math.min(function_z.getid(f2.husbandId), function_z.getid(f2.husbandId)));
+					if(!(f1_m>depart2 ||depart1<f2_m)) {
+						System.out.print("line "+ function_z.findwhichline(f1.id));
+						System.out.println("  ERROR: FAMILY: US11 "+f1.id+" Marriage occur during marriage to spouse "+ f2.id);
+					}
+				}
+			}
+		}
+	}
+	public static void US_test(List<Family> f, List<Individual> I){
 		System.out.println("US40:Include input line numbers");
 		for(int i=0;i<f.size();i++)
 			check_num(f.get(i));
@@ -197,6 +275,9 @@ public class function_z {
 		I.get(25).setBirthDate("1 JAN 2018");
 		for(int i=0;i<f.size();i++)
 			function_z.Birth_before_marriage_of_parents(f.get(i), I);
+		for(int i=0;i<f.size();i++)
+			function_z.Birth_before_death_of_parents(f.get(i), I);
+		function_z.doublemarrage(f, I);
 	}
 	
 }
