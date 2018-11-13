@@ -51,7 +51,6 @@ public class Individual {
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
-	
 	public String isAlive() {
 		return deathDate == null ? "True" : "False";
 	}
@@ -82,9 +81,9 @@ public class Individual {
 	}
 	
 	public String getAge() {
-		//try {
+		
 			if(birthDate != null) {
-//				
+				
 				String[] bdar = birthDate.split(" ");
 				
 				int bdint= Integer.parseInt(bdar[2]);
@@ -109,6 +108,8 @@ public class Individual {
 		
 		return "NA";
 	}
+	
+
 	
 	//New indvidual to get date fomart brithday
 	public LocalDate Getbrithtime() {
