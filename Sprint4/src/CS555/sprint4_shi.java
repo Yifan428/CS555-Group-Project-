@@ -18,15 +18,16 @@ public class sprint4_shi {
 	}
 	
 	public static List<Family> US04(List<Family> allFamilies) {
-		//List<Individual> tempIndividuals = new ArrayList<Individual>();
 		List<Family> tempFamilies = new ArrayList<Family>();
 		ArrayList<String> tempId = new ArrayList<String>();
 
 		for (Family fam : allFamilies) {
+			if(!fam.getDivorceDate().equals("NA")&&!fam.getMarriageDate().equals("NA")) {
 			int famage = Integer.parseInt(fam.getmarryTodivorceage());
-			if(famage< 0&&!fam.getDivorceDate().equals("NA")&&!fam.getMarriageDate().equals("NA")) {
+			if(famage < 0) {
 				tempFamilies.add(fam);
 			}
+		}
 		}
 		return tempFamilies;
 	}
@@ -36,45 +37,18 @@ public class sprint4_shi {
 		List<Family> tempFamilies = new ArrayList<Family>();
 		ArrayList<String> tempDivorceId = new ArrayList<String>();
 		ArrayList<String> tempId = new ArrayList<String>();
-		//First get all individuals' ids
-		for (Individual indi : allIndividuals) {			
-			tempId.add(indi.getId());			
-		}
-		//Then get all family member's id
-		for (Family fam : allFamilies) {
-			tempDivorceId.add(fam.getHusbandId());
-			tempDivorceId.add(fam.getWifeId());
-		}
-		//Compare this two id arraies to get a new array
-		ArrayList<String> tempDel = new ArrayList<String>();
-
-		for (String tId : tempId) {
-			for (String tdivorceId : tempDivorceId) {
-				if (tId.equals(tdivorceId)) {
-					tempDel.add(tId);
-				}
-			}
-		}
 
 		for (Individual indi : allIndividuals) {
-			for (String tdivorceId : tempDivorceId) {
-				if (indi.getId().equals(tdivorceId)) {
+			for(Family fam : allFamilies) {					
+				if(fam.getHusbandId()==null||fam.getWifeId()==null)
+					continue;
+				if(fam.getHusbandId().equals(indi.getId())||fam.getWifeId().equals(indi.getId())) {
+					indi.setDivorceDate(fam.getDivorceDate());
 					tempIndividuals.add(indi);
 				}
 			}
 		}
 
-		for (Individual indit : tempIndividuals) {
-			for (Family famt : allFamilies) {
-				if (indit.getId().equals(famt.getHusbandId())||indit.getId().equals(famt.getWifeId())) {
-					indit.setDivorceDate(famt.getDivorceDate());
-				}
-
-			}
-
-		}
-
-		earseDuplicateid(tempDel);
 		earseDuplicate(tempIndividuals);
 
 		return tempIndividuals;
@@ -95,21 +69,22 @@ public class sprint4_shi {
 	
 	
 	public static void printUS04(List<Family> tempFamilies) {
-		for (Family currentIndv : tempFamilies) {
-			System.out.println("ERROR: INDIVIDUAL: US04: " + currentIndv.getId() + ": marriage date " + currentIndv.getMarriageDate()+ "occurs after divorce date " + currentIndv.getDivorceDate() );
+		for (Family fam : tempFamilies) {
+			System.out.print("LINE "+ function_z.findwhichline(fam.getId())+ ": ");			
+			System.out.println("ERROR: FAMILIY: US04: " + fam.getId() + ": marriage date " + fam.getMarriageDate()+ "occurs after divorce date " + fam.getDivorceDate() );
 		}
 	}
 	
 	public static void printUS06(List<Individual> tempIndividuals) {
 		for (Individual currentIndv : tempIndividuals) {
-
 				if(!currentIndv.getDivorceDate().equals("NA")&&!currentIndv.getDeathDate().equals("NA")) {
-
 				int indidivTodeath = Integer.parseInt(currentIndv.getdivorceTodeathAge());
-				if(indidivTodeath >= 0) {
+				if(indidivTodeath < 0) {
+					System.out.print("LINE "+ function_z.findwhichline(currentIndv.getId())+ ": ");
 					System.out.println("ERROR: Family: US06: " + currentIndv.getId() + ": divorce date " + currentIndv.getDivorceDate()+ " occurs after death date " + currentIndv.getDeathDate());
 				}
 			}
 		}
 	}
+
 }
