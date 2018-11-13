@@ -31,3 +31,8 @@ Jinliu Yang
 ```
     To show all the Spint3 user stories, run run.java in the Sprint3 folder.
 ```
+## Sprint4
+
+```
+    To show all the Spint4 user stories, run run.java in the Sprint4 folder.
+```
