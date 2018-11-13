@@ -96,6 +96,7 @@ public class sprint2_shi {
 	
 	public static void printUS07(List<Individual> tempIndividuals) {
 		for (Individual currentIndv : tempIndividuals) {
+			System.out.print("LINE "+ function_z.findwhichline(currentIndv.getId())+ ": ");
 			System.out.println("ERROR: INDIVIDUAL: US07: " + currentIndv.getId() + ": " + currentIndv.getName() + "'s age is " + currentIndv.getAge()+ " which is over 150 ");
 		}
 	}
@@ -107,6 +108,7 @@ public class sprint2_shi {
 					//currentIndv.getmarrAge();
 				int indimarrTodeath = Integer.parseInt(currentIndv.getmarryTodeathAge());
 				if(indimarrTodeath >= 0) {
+					System.out.print("LINE "+ function_z.findwhichline(currentIndv.getId())+ ": ");
 					System.out.println("ERROR: Family: US05: " + currentIndv.getId() + ": marriage date " + currentIndv.getMarriageDate()+ " occurs after death date " + currentIndv.getDeathDate());
 				}
 			}
