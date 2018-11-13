@@ -41,7 +41,7 @@ public class function_z {
 				sonname=I.get(num).getName();
 				namelist=sonname.split(" ");
 				if(namelist[namelist.length-1]!=failyname){
-					System.out.print("line "+function_z.findwhichline(namelist[namelist.length-1]));
+					System.out.print("LINE "+function_z.findwhichline(namelist[namelist.length-1]));
 					System.out.println(" ERROR: FAMILY: US16: The "+f.id+" family's man's last name is not same ");	
 					namelist[namelist.length-1]=failyname;
 				}
@@ -62,7 +62,7 @@ public class function_z {
 		if(f.childrenname==null)
 			return;
 		if(f.childrenname.size()>5) {
-			System.out.print("line "+ function_z.findwhichline(f.id));
+			System.out.print("LINE "+ function_z.findwhichline(f.id));
 			System.out.println(" ERROR: FAMILY: US14 The "+f.id+" family have more than 5 child");
 	}
 }
@@ -108,7 +108,7 @@ public class function_z {
 		for(int i=0;i<f.size();i++) {
 			Family temp = f.get(i);
 			if(!function_z.Check_date(temp.marriageDate)||!function_z.Check_date(temp.divorceDate)) {
-				System.out.print("line "+ function_z.findwhichline(temp.id));
+				System.out.print("LINE "+ function_z.findwhichline(temp.id));
 				System.out.println(" ERROR: FAMILY: US42 The "+temp.id+" Family have illegitimate_dates");
 			}
 		}
@@ -124,11 +124,11 @@ public class function_z {
 			int num=Integer.parseInt((childid.substring(1,childid.length())));
 			long birthdate= function_z.change_date(I.get(num-1).birthDate).getTime();
 			if(birthdate-devoce>nine) {
-				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
+				System.out.print("LINE "+ function_z.findwhichline(I.get(i).id));
 				System.out.println(" ERROR: FAMILY: US8 The "+f.id+" Family have someone birth after device 9 mon");
 			}
 			if(birthdate>marry) {
-				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
+				System.out.print("LINE "+ function_z.findwhichline(I.get(i).id));
 				System.out.println(" ERROR: FAMILY: US8 The "+f.id+" Family have someone birth before marryage");
 			}
 		}
@@ -207,11 +207,11 @@ public class function_z {
 			int num=Integer.parseInt((childid.substring(1,childid.length())));
 			long birthdate= function_z.change_date(I.get(num-1).birthDate).getTime();
 			if(birthdate-father_time>nine) {
-				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
+				System.out.print("LINE "+ function_z.findwhichline(I.get(i).id));
 				System.out.println(" ERROR: FAMILY: US9 The "+f.id+" Family have someone birth after death of father 9 month");
 			}
 			if(birthdate>mother_time) {
-				System.out.print("line "+ function_z.findwhichline(I.get(i).id));
+				System.out.print("LINE "+ function_z.findwhichline(I.get(i).id));
 				System.out.println(" ERROR: FAMILY: US9 The "+f.id+" Family have someone birth after death of mother");
 			}
 		}
@@ -251,7 +251,7 @@ public class function_z {
 					depart2 = Math.min(function_z.departtime(f2.divorceDate), 
 							Math.min(function_z.getid(f2.husbandId), function_z.getid(f2.husbandId)));
 					if(!(f1_m>depart2 ||depart1<f2_m)) {
-						System.out.print("line "+ function_z.findwhichline(f1.id));
+						System.out.print("LINE "+ function_z.findwhichline(f1.id));
 						System.out.println("  ERROR: FAMILY: US11 "+f1.id+" Marriage occur during marriage to spouse "+ f2.id);
 					}
 				}
