@@ -1,6 +1,7 @@
 package CS555;
 
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -105,6 +106,35 @@ public class Family {
 		} else {
 			return "NA";
 		}
+	}
+	
+	public String getmarryTodivorceage() {
+		
+		if(marriageDate != null) {
+			
+			String[] mdar = marriageDate.split(" ");
+			
+			int mdint= Integer.parseInt(mdar[2]);
+			Calendar calm =Calendar.getInstance();
+			calm.set(Calendar.YEAR,mdint);
+			
+			if(divorceDate != null) {
+				
+				String[] ddar = divorceDate.split(" ");
+				
+				int ddint= Integer.parseInt(ddar[2]);
+				Calendar cald =Calendar.getInstance();
+				cald.set(Calendar.YEAR,ddint);
+				
+				return ""+ (cald.get(Calendar.YEAR) -calm.get(Calendar.YEAR));
+			} else {
+				Calendar cal = Calendar.getInstance();
+				
+				return ""+ (cal.get(Calendar.YEAR) - calm.get(Calendar.YEAR));	
+			}
+		}
+	
+	return "NA";
 	}
 
 	public void setChildrenId(List<String> childrenId) {
