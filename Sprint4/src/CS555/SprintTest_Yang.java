@@ -41,10 +41,12 @@ public class SprintTest_Yang {
 			IndvName.add(indvName);
 			IndvBirthDate.add(indvBirthDate);
 			if(!Sprint4_Yang.uniqueName(IndvName)) {
-				System.out.println("ERROR: INDIVIDUAL: US23: There are same Name in the Individuals. ");
+				System.out.print("LINE "+ function_z.findwhichline(individual.getId()));
+				System.out.println(" ERROR: INDIVIDUAL: US23: There are same Name in the Individuals. ");
 			}
 			if(!Sprint4_Yang.uniqueBirthDate(IndvBirthDate)) {
-				System.out.println("ERROR: INDIVIDUAL: US23: There are same Birthday in the Individuals. ");
+				System.out.print("LINE "+ function_z.findwhichline(individual.getId()));
+				System.out.println(" ERROR: INDIVIDUAL: US23: There are same Birthday in the Individuals. ");
 				break;
 			}
 			
@@ -66,7 +68,7 @@ public class SprintTest_Yang {
 
 		} 
 		if (num == 0) {
-			System.out.println("ERROR: FAMILY: US15: There is no family has more than 15 siblings");
+			System.out.println("FAMILY: US15: There is no family has more than 15 siblings");
 		}
 	} 
 	@Test
@@ -76,7 +78,8 @@ public class SprintTest_Yang {
 			Individual individual = individuals.get(i); 
 			String birthday = individual.getBirthDate(); 
 			if(Sprint4_Yang.getUpcomingBirthday(birthday)) {
-				System.out.println("ERROR: INDIVIDUAL: US38: The birthday of " +  individual.getId() + " " + birthday + " occur in the next 30 days");
+				System.out.print("LINE "+ function_z.findwhichline(individual.getId()));
+				System.out.println(" ERROR: INDIVIDUAL: US38: The birthday of " +  individual.getId() + " " + birthday + " occur in the next 30 days");
 			}
 		}	
 	}
@@ -100,7 +103,7 @@ public class SprintTest_Yang {
 			}
 		} 
 		if (num == 0) {
-			System.out.println("ERROR: FAMILY: US21: There is no wrong gender in family");
+			System.out.println("FAMILY: US21: There is no wrong gender in family");
 		}
 	}
 
@@ -134,7 +137,8 @@ public class SprintTest_Yang {
 			Individual individual = individuals.get(i);  
 			if (individual.isAlive()== "False") { 
 				ListYes = "Y"; 
-				System.out.println("ERROR: INDIVIDUAL: US29: " + individual.getId() + ": " + "This individual has already deceased");
+				System.out.print("LINE "+ function_z.findwhichline(individual.getId()));
+				System.out.println(" ERROR: INDIVIDUAL: US29: " + individual.getId() + ": " + "This individual has already deceased");
 			}  else { 
 				ListNo = "Y"; 
 			}       
@@ -155,7 +159,8 @@ public class SprintTest_Yang {
 			String indvID = individual.getId(); 
 			IndvID.add(indvID);
 			if(!Sprint4_Yang.uniqueId(IndvID)) {
-				System.out.println("ERROR: INDIVIDUAL: US22: There are same ID in the Individuals. ");
+				System.out.print("LINE "+ function_z.findwhichline(indvID));
+				System.out.println(" ERROR: INDIVIDUAL: US22: There are same ID in the Individuals. ");
 				break;
 			}
 		} 
@@ -177,12 +182,14 @@ public class SprintTest_Yang {
 			Individual individual = individuals.get(i); 
 			String birthday = individual.getBirthDate(); 
 			if(Sprint4_Yang.validateDate(birthday)) {
-				System.out.println("ERROR: INDIVIDUAL: US01: " + individual.getId() + ": " + "Birthday " + birthday + " occurs in the future");
+				System.out.print("LINE "+ function_z.findwhichline(individual.getId()));
+				System.out.println(" ERROR: INDIVIDUAL: US01: " + individual.getId() + ": " + "Birthday " + birthday + " occurs in the future");
 			}
 
 			String death = individual.getDeathDate(); 
 			if (Sprint4_Yang.validateDate(death)) { 
-				System.out.println("ERROR: INDIVIDUAL: US01: " + individual.getId() + ": " + "DeathDate " + death + " occurs in the future");
+				System.out.print("LINE "+ function_z.findwhichline(individual.getId()));
+				System.out.println(" ERROR: INDIVIDUAL: US01: " + individual.getId() + ": " + "DeathDate " + death + " occurs in the future");
 			} 
 
 		} 
@@ -192,11 +199,13 @@ public class SprintTest_Yang {
 			Family family = families.get(i); 
 			String marry = family.getMarriageDate(); 
 			if(Sprint4_Yang.validateDate(marry)) {
+				System.out.print("LINE "+ function_z.findwhichline(family.getId()));
 				System.out.println("ERROR: FAMILY: US01: " + family.getId() + ": " + "Marriage date " + marry + " occurs in the future");
 			}
 
 			String divorce = family.getDivorceDate(); 
 			if (Sprint4_Yang.validateDate(divorce)) { 
+				System.out.print("LINE "+ function_z.findwhichline(family.getId()));
 				System.out.println("ERROR: FAMILY: US01: " + family.getId() + ": " + "Divorce date " + divorce + " occurs in the future"); 
 			} 
 		} 
