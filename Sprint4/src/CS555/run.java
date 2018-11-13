@@ -66,6 +66,8 @@ public class run {
         SprintTest_Yang.testUserStory29(allIndividuals);
         SprintTest_Yang.testUserStory21(allFamilies);
         SprintTest_Yang.testUserStory38(allIndividuals);
+	SprintTest_Yang.testUserStory15(allFamilies);
+        SprintTest_Yang.testUserStory23(allIndividuals);
         
         //US from YCZ    
         function_z.US_test(allFamilies,allIndividuals);
