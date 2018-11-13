@@ -17,6 +17,20 @@ public class sprint4_shi {
 		return tempIndividuals;
 	}
 	
+	public static List<Family> US04(List<Family> allFamilies) {
+		//List<Individual> tempIndividuals = new ArrayList<Individual>();
+		List<Family> tempFamilies = new ArrayList<Family>();
+		ArrayList<String> tempId = new ArrayList<String>();
+
+		for (Family fam : allFamilies) {
+			int famage = Integer.parseInt(fam.getmarryTodivorceage());
+			if(famage< 0&&!fam.getDivorceDate().equals("NA")&&!fam.getMarriageDate().equals("NA")) {
+				tempFamilies.add(fam);
+			}
+		}
+		return tempFamilies;
+	}
+	
 	public static List<Individual> US06(List<Individual> allIndividuals, List<Family> allFamilies) {
 		List<Individual> tempIndividuals = new ArrayList<Individual>();
 		List<Family> tempFamilies = new ArrayList<Family>();
@@ -80,13 +94,19 @@ public class sprint4_shi {
 	}	
 	
 	
+	public static void printUS04(List<Family> tempFamilies) {
+		for (Family currentIndv : tempFamilies) {
+			System.out.println("ERROR: INDIVIDUAL: US04: " + currentIndv.getId() + ": marriage date " + currentIndv.getMarriageDate()+ "occurs after divorce date " + currentIndv.getDivorceDate() );
+		}
+	}
+	
 	public static void printUS06(List<Individual> tempIndividuals) {
 		for (Individual currentIndv : tempIndividuals) {
 
-				if(!currentIndv.getDivorceDate().equals("NA")&&!currentIndv.getmarrAge().equals("NA")&&!currentIndv.getDeathDate().equals("NA")) {
+				if(!currentIndv.getDivorceDate().equals("NA")&&!currentIndv.getDeathDate().equals("NA")) {
 
 				int indidivTodeath = Integer.parseInt(currentIndv.getdivorceTodeathAge());
-				if(indidivTodeath < 0) {
+				if(indidivTodeath >= 0) {
 					System.out.println("ERROR: Family: US06: " + currentIndv.getId() + ": divorce date " + currentIndv.getDivorceDate()+ " occurs after death date " + currentIndv.getDeathDate());
 				}
 			}
