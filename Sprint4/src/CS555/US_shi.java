@@ -101,6 +101,7 @@ public class US_shi {
 
 	public static void printUS03(List<Individual> tempIndividuals) {
 		for (Individual currentIndv : tempIndividuals) {
+			System.out.print("LINE "+ function_z.findwhichline(currentIndv.getId())+ ": ");
 			System.out.println("ERROR: INDIVIDUAL: US03: " + currentIndv.getId() + ": birthday " + currentIndv.getBirthDate()+ "occurs after death date " + currentIndv.getDeathDate() );
 		}
 	}
@@ -110,6 +111,7 @@ public class US_shi {
 			if(currentIndv.getmarrAge()!="NA") {
 				int indimarr = Integer.parseInt(currentIndv.getmarrAge());
 				if(indimarr <= 0) {
+					System.out.print("LINE "+ function_z.findwhichline(currentIndv.getId())+ ": ");
 					System.out.println("ERROR: Family: US02: " + currentIndv.getId() + ": birthday " + currentIndv.getBirthDate()+ " occurs after marriage date " );
 				}
 			}
