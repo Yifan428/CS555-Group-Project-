@@ -57,6 +57,7 @@ public class run {
         sprint3_shi.printUS10(sprint3_shi.US10(allIndividuals,allFamilies));
         sprint3_shi.printUS12(sprint3_shi.US12(allIndividuals,allFamilies));
         sprint4_shi.printUS06(sprint4_shi.US06(allIndividuals,allFamilies));
+	sprint4_shi.printUS04(sprint4_shi.US04(allFamilies));
 
          
         //Us from JL
