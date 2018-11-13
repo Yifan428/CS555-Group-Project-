@@ -17,10 +17,45 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-public class Sprint3_Yang {
+public class Sprint4_Yang {
 	static List<Individual> allIndividuals = new ArrayList<Individual>();
 	static List<Family> allFamilies = new ArrayList<Family>();
+
+	//Sprint4
+	//US23
+	public static boolean uniqueName(List<String> IndvName) {
+		ArrayList<String> list = new ArrayList<String>();
+		for (String i : IndvName) {
+			if (list.contains(i)) return false;
+			else list.add(i);
+		}
+		return true;
+	}
 	
+	public static boolean uniqueBirthDate(List<String> IndvBirthDate) {
+		ArrayList<String> list = new ArrayList<String>();
+		for (String i : IndvBirthDate) {
+			if (list.contains(i)) return false;
+			else list.add(i);
+		}
+		return true;
+	}
+	
+	//US15 
+	public static boolean siblingsLessThan15(List<String> childrenName) { 
+
+		if (childrenName == null) {
+			return true;
+		}else {
+			int siblingscount = childrenName.size();
+			if(siblingscount <= 15){
+				return true;
+			}
+		}
+
+		return false;  
+	} 
+
 	//Sprint 3
 	//US21
 	public static boolean validateHusGender(String id) {
@@ -46,28 +81,33 @@ public class Sprint3_Yang {
 
 	//US38
 	public static boolean getUpcomingBirthday(String birthday) {
-		
-		if(birthday.contains("NOV")) {
+
+		if(birthday.contains("DEC")) {
 			return true;
+		}else if(birthday.contains("NOV")) {
+			if(birthday.contains("17")|birthday.contains("26")) {
+				return true;
+			}
+
 		}
-		
+
 		return false; 
 	}
 
-     	//Sprint 2
+	//Sprint 2
 	//US29
 	public List<Individual> getDeceased() {
-    	 List<Individual> res = new ArrayList<Individual>();
-    	 for (Individual i : allIndividuals)
-    		 if (i.isAlive()== "False")
-    			 res.add(i);
-    	 return res;
-     }
+		List<Individual> res = new ArrayList<Individual>();
+		for (Individual i : allIndividuals)
+			if (i.isAlive()== "False")
+				res.add(i);
+		return res;
+	}
 
-    
-    	//Sprint 1 
-   	//US22
-    	public static boolean uniqueId(List<String> ID) {
+
+	//Sprint 1 
+	//US22
+	public static boolean uniqueId(List<String> ID) {
 		ArrayList<String> list = new ArrayList<String>();
 		for (String id : ID) {
 			if (list.contains(id)) return false;
@@ -75,64 +115,64 @@ public class Sprint3_Yang {
 		}
 		return true;
 	}
-    
+
 	//US01 
-    	public static boolean validateDate(String inputDate) { 
-    	
- 		try { 
- 			if (inputDate.equalsIgnoreCase("NA")) {
- 				return false;
- 			}
- 			else { 
- 				Date now = new Date();
+	public static boolean validateDate(String inputDate) { 
+
+		try { 
+			if (inputDate.equalsIgnoreCase("NA")) {
+				return false;
+			}
+			else { 
+				Date now = new Date();
 				SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH); 
 				String time = sdf.format(now.getTime());
- 	            Date date1 = sdf.parse(inputDate);  
- 	            if (date1.after(now)) { 
- 	            	return true; 
- 	            } 
- 			
- 			}
- 		} catch(ParseException e) { 
- 			System.out.println("Exception in parsing date " + inputDate); 
- 			return false; 
- 		}
-		return false; 
- 
- 	} 
-    
-	public static void printINDIAndFAMTables(File f) {
-        BufferedReader br = null;
+				Date date1 = sdf.parse(inputDate);  
+				if (date1.after(now)) { 
+					return true; 
+				} 
 
-        try {
-	    	br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
-	    	
-	    	Individual indv = null;
-	    	Family currentFamily = null;
-	    	boolean readingBirthDate = false;
-	    	boolean readingDeathDate = false;
-	    	boolean readingMarriageDate = false;
-	    	boolean readingDivorceDate = false;
-	    	
-	    	// read each line from the file
-	    	for (String line = br.readLine(); line != null; line = br.readLine()) {
+			}
+		} catch(ParseException e) { 
+			System.out.println("Exception in parsing date " + inputDate); 
+			return false; 
+		}
+		return false; 
+
+	} 
+
+	public static void printINDIAndFAMTables(File f) {
+		BufferedReader br = null;
+
+		try {
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+
+			Individual indv = null;
+			Family currentFamily = null;
+			boolean readingBirthDate = false;
+			boolean readingDeathDate = false;
+			boolean readingMarriageDate = false;
+			boolean readingDivorceDate = false;
+
+			// read each line from the file
+			for (String line = br.readLine(); line != null; line = br.readLine()) {
 
 				// Split the line into words	
 				String[] words = line.split(" ");
 
 				// check if the line is valid
 				if(words != null && words.length >= 2) {
-					
+
 					boolean isSpecialScenario = false;
 					if(words.length >= 3 && (words[2].equals("INDI") || words[2].equals("FAM")) ) {
 						isSpecialScenario = true;
 					}
-					
+
 					// obtain level, tag and value from the line
 					String level = words[0];
 					String tag = "";
 					String value = "";
-					
+
 					if(!isSpecialScenario) {
 						tag = words[1];
 						for(int i=2;i<words.length;i++) {
@@ -145,23 +185,23 @@ public class Sprint3_Yang {
 							value += " " +words[i];
 						}
 					}
-					
+
 					// Check if we encounter INDI record, 
 					if(tag.equals("INDI")) {
 						indv = new Individual();
 						indv.setId(value);
-						
+
 						allIndividuals.add(indv);
-					
+
 					}
-					
+
 					if(tag.equals("NAME") && indv != null) {
 						indv.setName(value);
 					}
 					if(tag.equals("SEX")) {
 						indv.setGender(value);
 					}
-					
+
 					if(tag.equals("BIRT")) {
 						readingBirthDate = true;
 						continue;
@@ -170,7 +210,7 @@ public class Sprint3_Yang {
 						readingBirthDate = false;
 						indv.setBirthDate(value);
 					}
-					
+
 					if(tag.equals("MARR")) {
 						readingMarriageDate = true;
 						continue;
@@ -197,7 +237,7 @@ public class Sprint3_Yang {
 						readingDeathDate = false;
 						indv.setDeathDate(value);
 					}
-					
+
 					if(tag.equals("FAM")) {
 						currentFamily = null;
 						for (Family family:allFamilies) {
@@ -210,10 +250,10 @@ public class Sprint3_Yang {
 							allFamilies.add(currentFamily);
 						}
 					}
-					
+
 					if(tag.equals("FAMS")) {
 						indv.getSpouseFamilyIds().add(value);
-						
+
 						// Let's add the spouse to family table
 						Family fam = null;
 						for (Family family:allFamilies) {
@@ -233,10 +273,10 @@ public class Sprint3_Yang {
 							fam.setWifeId(indv.getId());
 						}
 					}
-					
+
 					if(tag.equals("FAMC")) {
 						indv.getChildFamilyIds().add(value);
-						
+
 						// Let's add the children IDs to the family table
 						Family fam = null;
 						for (Family family:allFamilies) {
@@ -256,58 +296,58 @@ public class Sprint3_Yang {
 								fam.getChildrenId().add(value);
 						}
 					}
-					
+
 				}
-	    	}
-	    	
-	    	// at this stage we have all Individuals stored in list named allIndividuals
-	    	System.out.println("Individuals");
-	    	System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
-	    			"----------", "-------------------------", "-------", "------------", "-----", "-------", "------------", "--------------------", "--------------------");
-	    	System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
-	    			"ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse");
-	    	System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
-	    			"----------", "-------------------------", "-------", "------------", "-----", "-------", "------------", "--------------------", "--------------------");
-	    			
-	    	for(int i=0;i<allIndividuals.size();i++) {
-	    		Individual currentIndv = allIndividuals.get(i);
-	    		System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
-	    				currentIndv.getId(), currentIndv.getName(), currentIndv.getGender(),
-	    				currentIndv.getBirthDate(), currentIndv.getAge(), currentIndv.isAlive(),
-	    				currentIndv.getDeathDate(), currentIndv.getChildFamilyIdsAsString(), currentIndv.getSpouseFamilyIdsAsString());
-	    	}
-	    	System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
-	    			"----------", "-------------------------", "-------", "------------", "-----", "-------", "------------", "--------------------", "--------------------");
-	    	
-	    	// Now, let's print all families stored in list named allFamilies
-	    	System.out.println("Families");
-	    	System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
-	    			"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
-	    	
-	    	
-	    	System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
-	    			"ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children");
-	    	System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
-	    			"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
-	    	for(Family fam: allFamilies)
-	    		System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-10s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
-	    				fam.getId(), fam.getMarriageDate() == null ? "NA" : fam.getMarriageDate(), fam.getDivorceDate() == null ? "NA" : fam.getDivorceDate(), fam.getHusbandId(),
-	    								fam.getHusbandName(),fam.getWifeId(), fam.getWifeName(),fam.getChildrenIdAsString());
-	    	System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-10s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
-	    			"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
-	    							
-        
-        }  catch (IOException e) {
-        	//e.printStackTrace();
-        	System.out.println("Look like you passed incorrect file name");
-        }  finally {
-        	try {
-        		if (br != null)br.close();
-        		
-        	} catch (IOException ex) {
-        		ex.printStackTrace();
-        	}
-        }
+			}
+
+			// at this stage we have all Individuals stored in list named allIndividuals
+			System.out.println("Individuals");
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
+					"----------", "-------------------------", "-------", "------------", "-----", "-------", "------------", "--------------------", "--------------------");
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
+					"ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse");
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
+					"----------", "-------------------------", "-------", "------------", "-----", "-------", "------------", "--------------------", "--------------------");
+
+			for(int i=0;i<allIndividuals.size();i++) {
+				Individual currentIndv = allIndividuals.get(i);
+				System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
+						currentIndv.getId(), currentIndv.getName(), currentIndv.getGender(),
+						currentIndv.getBirthDate(), currentIndv.getAge(), currentIndv.isAlive(),
+						currentIndv.getDeathDate(), currentIndv.getChildFamilyIdsAsString(), currentIndv.getSpouseFamilyIdsAsString());
+			}
+			System.out.format("|%1$-10s|%2$-25s|%3$-7s|%4$-12s|%5$-5s|%6$-7s|%7$-12s|%8$-20s|%9$-20s|\n", 
+					"----------", "-------------------------", "-------", "------------", "-----", "-------", "------------", "--------------------", "--------------------");
+
+			// Now, let's print all families stored in list named allFamilies
+			System.out.println("Families");
+			System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
+					"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
+
+
+			System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
+					"ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children");
+			System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-5s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
+					"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
+			for(Family fam: allFamilies)
+				System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-10s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
+						fam.getId(), fam.getMarriageDate() == null ? "NA" : fam.getMarriageDate(), fam.getDivorceDate() == null ? "NA" : fam.getDivorceDate(), fam.getHusbandId(),
+								fam.getHusbandName(),fam.getWifeId(), fam.getWifeName(),fam.getChildrenIdAsString());
+			System.out.format("|%1$-10s|%2$-12s|%3$-12s|%4$-10s|%5$-25s|%6$-10s|%7$-25s|%8$-20s|\n", 
+					"----------", "------------", "------------", "----------", "-------------------------", "----------", "-------------------------", "--------------------");
+
+
+		}  catch (IOException e) {
+			//e.printStackTrace();
+			System.out.println("Look like you passed incorrect file name");
+		}  finally {
+			try {
+				if (br != null)br.close();
+
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
 
 	}
 }
